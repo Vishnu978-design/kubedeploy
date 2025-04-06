@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mykubedeploy
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: kubedeploy
+  template:
+    metadata:
+      labels:
+        app: kubedeploy
+    spec:
+      containers:
+        - name: mykubedeploy
+          image: vishnu529/kubedeploy:latest  # Your Docker image
+          ports:
+            - containerPort: 80
+          imagePullPolicy: Always
